@@ -10,70 +10,122 @@
   *{box-sizing:border-box}
   body{
     margin:0;
-    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     background:#111;color:#ddd;
-    padding:48px 20px 80px;
+    padding:40px 16px 64px;
   }
   main{max-width:640px;margin:0 auto}
-  h1{font-size:1.05rem;font-weight:600;margin:0 0 4px}
-  .meta{color:#777;font-size:0.85rem;margin:0 0 36px}
-  ol{list-style:none;margin:0;padding:0;border-top:1px solid #2c2c2c}
-  li{border-bottom:1px solid #2c2c2c}
+  .label{
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    text-transform:uppercase;letter-spacing:0.1em;font-size:0.72rem;color:#777;
+  }
+  h1{font-size:1.35rem;font-weight:700;margin:6px 0 8px;color:#fff}
+  .meta{color:#9a9a9a;font-size:0.92rem;line-height:1.5;margin:0 0 28px;max-width:56ch}
+
+  ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
   li a{
-    display:block;padding:18px 32px 18px 14px;text-decoration:none;color:inherit;
-    position:relative;border-left:2px solid transparent;
+    display:flex;align-items:center;gap:16px;
+    padding:16px;text-decoration:none;color:inherit;
+    border:1px solid #2c2c2c;border-radius:10px;
+    background:#161616;
+    transition:border-color .15s, background .15s;
   }
-  li a::after{
-    content:"→";position:absolute;right:8px;top:18px;color:#555;
-    transition:transform .12s, color .12s;
+  li a:hover,li a:focus-visible{background:#1c1c1c;border-color:var(--accent,#555)}
+  li a:active{background:#202020}
+
+  .thumb{
+    flex:none;width:66px;height:48px;border-radius:5px;overflow:hidden;
+    border:1px solid rgba(255,255,255,.14);
   }
-  li a:hover{background:#181818;border-left-color:var(--accent,#666)}
-  li a:hover .name{text-decoration:underline}
-  li a:hover::after{color:#f2f2f2;transform:translateX(3px)}
-  .row{display:flex;align-items:baseline;gap:10px;justify-content:space-between}
-  .num{color:#666;font-size:0.85rem}
-  .name{font-size:0.95rem;color:#f2f2f2}
-  .desc{color:#8a8a8a;font-size:0.82rem;margin-top:6px;line-height:1.5;max-width:50ch}
-  .dots{display:flex;gap:4px;flex-shrink:0}
-  .dots span{width:9px;height:9px;border:1px solid rgba(255,255,255,.25)}
-  .hint{color:#555;font-size:0.78rem;margin:10px 0 28px}
-  footer{margin-top:40px;color:#666;font-size:0.8rem;line-height:1.6}
-  footer p{margin:0 0 6px}
-  a.plain{color:#999}
+  .thumb svg{display:block;width:100%;height:100%}
+
+  .body{flex:1;min-width:0}
+  .row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;color:#666;font-size:0.78rem}
+  .name{font-size:1.02rem;font-weight:600;color:#f4f4f4}
+  .desc{color:#8f8f8f;font-size:0.85rem;margin-top:4px;line-height:1.5}
+
+  .go{flex:none;color:#666;font-size:1.2rem;transition:transform .15s,color .15s}
+  li a:hover .go,li a:focus-visible .go{color:#fff;transform:translateX(2px)}
+
+  footer{margin-top:36px;color:#666;font-size:0.8rem;line-height:1.6}
+  footer p{margin:0}
+
+  @media (max-width:420px){
+    .thumb{width:52px;height:38px}
+    .name{font-size:0.96rem}
+    li a{padding:14px;gap:12px}
+  }
 </style>
 </head>
 <body>
   <main>
-    <h1>Zenvora — three layout options</h1>
-    <p class="meta">Same brief, same nine sections, different treatment. Open each one and click around before we settle on a direction.</p>
-    <p class="hint">↓ click a name below to open that version</p>
+    <p class="label">Zenvora — internal review</p>
+    <h1>Pick a website direction</h1>
+    <p class="meta">Same brief, same nine sections — three different visual treatments below. Tap one to open it, then compare on your phone and on desktop before we settle on a direction.</p>
 
     <ol>
       <li>
         <a href="v1-industrial/" style="--accent:#ff7a1a">
-          <div class="row">
-            <span class="name"><span class="num">01</span> Industrial Dark</span>
-            <span class="dots"><span style="background:#10151a"></span><span style="background:#ff7a1a"></span><span style="background:#eef2f5"></span></span>
-          </div>
-          <p class="desc">Charcoal ground, condensed type, amber accent. Steel-plant energy, closer to a traditional industrial B2B site.</p>
+          <span class="thumb">
+            <svg viewBox="0 0 66 48" preserveAspectRatio="none">
+              <rect width="66" height="48" fill="#10151a"/>
+              <rect width="66" height="8" fill="#161d23"/>
+              <rect x="6" y="6" width="10" height="2.5" fill="#ff7a1a"/>
+              <rect x="6" y="16" width="30" height="4" fill="#eef2f5"/>
+              <rect x="6" y="22" width="20" height="2.5" fill="#9aa7b0"/>
+              <rect x="6" y="32" width="13" height="10" fill="#1b2229" stroke="#2a333b" stroke-width="0.5"/>
+              <rect x="21" y="32" width="13" height="10" fill="#1b2229" stroke="#2a333b" stroke-width="0.5"/>
+              <rect x="36" y="32" width="13" height="10" fill="#1b2229" stroke="#2a333b" stroke-width="0.5"/>
+            </svg>
+          </span>
+          <span class="body">
+            <span class="row"><span class="num">01</span><span class="name">Industrial Dark</span></span>
+            <p class="desc">Charcoal ground, bold type, amber accent. Heavy, steel-plant energy.</p>
+          </span>
+          <span class="go" aria-hidden="true">›</span>
         </a>
       </li>
       <li>
         <a href="v2-blueprint/" style="--accent:#1a4d8f">
-          <div class="row">
-            <span class="name"><span class="num">02</span> Technical Blueprint</span>
-            <span class="dots"><span style="background:#f5f7f9"></span><span style="background:#1a4d8f"></span><span style="background:#12202e"></span></span>
-          </div>
-          <p class="desc">Light, grid-lined, engineering-drawing feel with monospace labels and corner-bracket cards. Reads precise, technical.</p>
+          <span class="thumb">
+            <svg viewBox="0 0 66 48" preserveAspectRatio="none">
+              <rect width="66" height="48" fill="#f5f7f9"/>
+              <rect width="66" height="8" fill="#ffffff"/>
+              <rect x="6" y="6" width="10" height="2.5" fill="#1a4d8f"/>
+              <rect x="6" y="16" width="30" height="4" fill="#12202e"/>
+              <rect x="6" y="22" width="20" height="2.5" fill="#57697a"/>
+              <rect x="6" y="32" width="13" height="10" fill="#ffffff" stroke="#d3dde4" stroke-width="0.5"/>
+              <rect x="21" y="32" width="13" height="10" fill="#ffffff" stroke="#d3dde4" stroke-width="0.5"/>
+              <rect x="36" y="32" width="13" height="10" fill="#ffffff" stroke="#d3dde4" stroke-width="0.5"/>
+            </svg>
+          </span>
+          <span class="body">
+            <span class="row"><span class="num">02</span><span class="name">Technical Blueprint</span></span>
+            <p class="desc">Light, grid-lined, engineering-drawing feel. Reads precise and technical.</p>
+          </span>
+          <span class="go" aria-hidden="true">›</span>
         </a>
       </li>
       <li>
         <a href="v3-minimal/" style="--accent:#b5502e">
-          <div class="row">
-            <span class="name"><span class="num">03</span> Modern Minimal</span>
-            <span class="dots"><span style="background:#faf9f6"></span><span style="background:#b5502e"></span><span style="background:#1c1f22"></span></span>
-          </div>
-          <p class="desc">Warm off-white, generous whitespace, rust accent. Editorial, confident, doesn't try too hard to look "corporate".</p>
+          <span class="thumb">
+            <svg viewBox="0 0 66 48" preserveAspectRatio="none">
+              <rect width="66" height="48" fill="#faf9f6"/>
+              <rect width="66" height="9" fill="#faf9f6"/>
+              <rect x="6" y="6" width="10" height="2.5" fill="#b5502e"/>
+              <rect x="6" y="17" width="30" height="4" fill="#1c1f22"/>
+              <rect x="6" y="23" width="20" height="2.5" fill="#6b6d68"/>
+              <rect x="6" y="33" width="13" height="9" fill="#ffffff"/>
+              <rect x="21" y="33" width="13" height="9" fill="#ffffff"/>
+              <rect x="36" y="33" width="13" height="9" fill="#ffffff"/>
+            </svg>
+          </span>
+          <span class="body">
+            <span class="row"><span class="num">03</span><span class="name">Modern Minimal</span></span>
+            <p class="desc">Warm off-white, generous whitespace, rust accent. Editorial, confident.</p>
+          </span>
+          <span class="go" aria-hidden="true">›</span>
         </a>
       </li>
     </ol>

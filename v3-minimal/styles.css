@@ -144,7 +144,7 @@ h2{font-size:clamp(2rem,3.8vw,2.8rem);margin-bottom:24px}
 .quote-form label{display:flex;flex-direction:column;gap:8px;font-size:0.82rem;color:var(--ink-dim);font-weight:500}
 .quote-form input,.quote-form textarea{
   background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
-  padding:13px 14px;color:var(--ink);font-family:var(--font-body);font-size:0.98rem;resize:vertical;
+  padding:13px 14px;color:var(--ink);font-family:var(--font-body);font-size:1rem;resize:vertical;
 }
 .quote-form input:focus,.quote-form textarea:focus{outline:none;border-color:var(--accent)}
 .form-status{font-size:0.9rem;min-height:0}
@@ -182,4 +182,13 @@ h2{font-size:clamp(2rem,3.8vw,2.8rem);margin-bottom:24px}
   .hero{padding:100px 0 80px}
   main section{padding:72px 0}
   .header-actions .btn-primary{display:none}
+}
+@media (max-width:420px){
+  .wrap{padding:0 20px}
+  .header-inner{height:68px}
+  .main-nav{top:68px}
+  .hero{padding:72px 0 56px}
+  .hero-actions .btn{width:100%}
+  .quote-form{padding:24px}
+  .cta-inner{gap:32px}
 }
