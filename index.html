@@ -7,62 +7,73 @@
 <meta name="robots" content="noindex">
 <style>
   :root{color-scheme:light dark}
-  *{box-sizing:border-box;margin:0;padding:0}
+  *{box-sizing:border-box}
   body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
-    background:#0f1417;color:#eef2f5;min-height:100vh;
-    display:flex;flex-direction:column;align-items:center;
-    padding:64px 24px;
+    margin:0;
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    background:#111;color:#ddd;
+    padding:48px 20px 80px;
   }
-  .head{max-width:680px;text-align:center;margin-bottom:56px}
-  .head p.kicker{text-transform:uppercase;letter-spacing:0.14em;font-size:0.8rem;color:#ff7a1a;font-weight:600;margin-bottom:14px}
-  .head h1{font-size:2.2rem;margin-bottom:14px;letter-spacing:-0.01em}
-  .head p.sub{color:#9aa7b0;font-size:1.05rem;line-height:1.6}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1080px;width:100%}
-  .card{
-    background:#161d23;border:1px solid #2a333b;border-radius:8px;
-    padding:32px;text-decoration:none;color:inherit;transition:transform .15s, border-color .15s;
-    display:flex;flex-direction:column;gap:14px;
+  main{max-width:640px;margin:0 auto}
+  h1{font-size:1.05rem;font-weight:600;margin:0 0 4px}
+  .meta{color:#777;font-size:0.85rem;margin:0 0 36px}
+  ol{list-style:none;margin:0;padding:0;border-top:1px solid #2c2c2c}
+  li{border-bottom:1px solid #2c2c2c}
+  li a{
+    display:block;padding:18px 4px;text-decoration:none;color:inherit;
+    position:relative;
   }
-  .card:hover{transform:translateY(-4px);border-color:#ff7a1a}
-  .swatch{display:flex;gap:6px;margin-bottom:6px}
-  .swatch span{width:22px;height:22px;border-radius:4px;display:block}
-  .card h2{font-size:1.3rem}
-  .card p{color:#9aa7b0;font-size:0.92rem;line-height:1.55}
-  .tag{align-self:flex-start;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;color:#ff7a1a;font-weight:600;margin-top:auto;padding-top:10px}
-  footer{margin-top:64px;color:#5a6570;font-size:0.82rem;text-align:center;max-width:600px;line-height:1.6}
+  li a:hover{background:#181818}
+  li a:hover .name{text-decoration:underline}
+  .row{display:flex;align-items:baseline;gap:10px;justify-content:space-between}
+  .num{color:#666;font-size:0.85rem}
+  .name{font-size:0.95rem;color:#f2f2f2}
+  .desc{color:#8a8a8a;font-size:0.82rem;margin-top:6px;line-height:1.5;max-width:52ch}
+  .dots{display:flex;gap:4px;flex-shrink:0}
+  .dots span{width:9px;height:9px;border:1px solid rgba(255,255,255,.25)}
+  footer{margin-top:40px;color:#666;font-size:0.8rem;line-height:1.6}
+  footer p{margin:0 0 6px}
+  a.plain{color:#999}
 </style>
 </head>
 <body>
-  <div class="head">
-    <p class="kicker">Zenvora — Concept Review</p>
-    <h1>Three Website Directions</h1>
-    <p class="sub">Same content, same 9-section structure from the design brief — three different visual treatments. Pick the one that feels right, or mix elements between them.</p>
-  </div>
+  <main>
+    <h1>Zenvora — three layout options</h1>
+    <p class="meta">Same brief, same nine sections, different treatment. Open each one and click around before we settle on a direction.</p>
 
-  <div class="cards">
-    <a class="card" href="v1-industrial/">
-      <div class="swatch"><span style="background:#10151a;border:1px solid #333"></span><span style="background:#ff7a1a"></span><span style="background:#eef2f5"></span></div>
-      <h2>01 — Industrial Dark</h2>
-      <p>Dark charcoal ground, bold condensed type, amber accent. Heavy, confident, steel-plant energy — closest to a classic industrial B2B look.</p>
-      <span class="tag">View version →</span>
-    </a>
-    <a class="card" href="v2-blueprint/">
-      <div class="swatch"><span style="background:#f5f7f9;border:1px solid #333"></span><span style="background:#1a4d8f"></span><span style="background:#12202e"></span></div>
-      <h2>02 — Technical Blueprint</h2>
-      <p>Light, grid-lined, engineering-drawing feel with monospace labels and corner-bracket cards. Reads as precise and technical.</p>
-      <span class="tag">View version →</span>
-    </a>
-    <a class="card" href="v3-minimal/">
-      <div class="swatch"><span style="background:#faf9f6;border:1px solid #333"></span><span style="background:#b5502e"></span><span style="background:#1c1f22"></span></div>
-      <h2>03 — Modern Minimal</h2>
-      <p>Warm off-white, generous whitespace, rust/copper accent. Editorial and confident without feeling corporate.</p>
-      <span class="tag">View version →</span>
-    </a>
-  </div>
+    <ol>
+      <li>
+        <a href="v1-industrial/">
+          <div class="row">
+            <span class="name"><span class="num">01</span> Industrial Dark</span>
+            <span class="dots"><span style="background:#10151a"></span><span style="background:#ff7a1a"></span><span style="background:#eef2f5"></span></span>
+          </div>
+          <p class="desc">Charcoal ground, condensed type, amber accent. Steel-plant energy, closer to a traditional industrial B2B site.</p>
+        </a>
+      </li>
+      <li>
+        <a href="v2-blueprint/">
+          <div class="row">
+            <span class="name"><span class="num">02</span> Technical Blueprint</span>
+            <span class="dots"><span style="background:#f5f7f9"></span><span style="background:#1a4d8f"></span><span style="background:#12202e"></span></span>
+          </div>
+          <p class="desc">Light, grid-lined, engineering-drawing feel with monospace labels and corner-bracket cards. Reads precise, technical.</p>
+        </a>
+      </li>
+      <li>
+        <a href="v3-minimal/">
+          <div class="row">
+            <span class="name"><span class="num">03</span> Modern Minimal</span>
+            <span class="dots"><span style="background:#faf9f6"></span><span style="background:#b5502e"></span><span style="background:#1c1f22"></span></span>
+          </div>
+          <p class="desc">Warm off-white, generous whitespace, rust accent. Editorial, confident, doesn't try too hard to look "corporate".</p>
+        </a>
+      </li>
+    </ol>
 
-  <footer>
-    This picker page is a review aid only — it won't ship with the final site. Once a direction is chosen, its folder becomes the site root.
-  </footer>
+    <footer>
+      <p>Internal review page — won't ship with the final site. Once we pick a direction, that folder becomes the site root and this page goes away.</p>
+    </footer>
+  </main>
 </body>
 </html>
