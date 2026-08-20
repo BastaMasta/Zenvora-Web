@@ -20,17 +20,23 @@
   ol{list-style:none;margin:0;padding:0;border-top:1px solid #2c2c2c}
   li{border-bottom:1px solid #2c2c2c}
   li a{
-    display:block;padding:18px 4px;text-decoration:none;color:inherit;
-    position:relative;
+    display:block;padding:18px 32px 18px 14px;text-decoration:none;color:inherit;
+    position:relative;border-left:2px solid transparent;
   }
-  li a:hover{background:#181818}
+  li a::after{
+    content:"→";position:absolute;right:8px;top:18px;color:#555;
+    transition:transform .12s, color .12s;
+  }
+  li a:hover{background:#181818;border-left-color:var(--accent,#666)}
   li a:hover .name{text-decoration:underline}
+  li a:hover::after{color:#f2f2f2;transform:translateX(3px)}
   .row{display:flex;align-items:baseline;gap:10px;justify-content:space-between}
   .num{color:#666;font-size:0.85rem}
   .name{font-size:0.95rem;color:#f2f2f2}
-  .desc{color:#8a8a8a;font-size:0.82rem;margin-top:6px;line-height:1.5;max-width:52ch}
+  .desc{color:#8a8a8a;font-size:0.82rem;margin-top:6px;line-height:1.5;max-width:50ch}
   .dots{display:flex;gap:4px;flex-shrink:0}
   .dots span{width:9px;height:9px;border:1px solid rgba(255,255,255,.25)}
+  .hint{color:#555;font-size:0.78rem;margin:10px 0 28px}
   footer{margin-top:40px;color:#666;font-size:0.8rem;line-height:1.6}
   footer p{margin:0 0 6px}
   a.plain{color:#999}
@@ -40,10 +46,11 @@
   <main>
     <h1>Zenvora — three layout options</h1>
     <p class="meta">Same brief, same nine sections, different treatment. Open each one and click around before we settle on a direction.</p>
+    <p class="hint">↓ click a name below to open that version</p>
 
     <ol>
       <li>
-        <a href="v1-industrial/">
+        <a href="v1-industrial/" style="--accent:#ff7a1a">
           <div class="row">
             <span class="name"><span class="num">01</span> Industrial Dark</span>
             <span class="dots"><span style="background:#10151a"></span><span style="background:#ff7a1a"></span><span style="background:#eef2f5"></span></span>
@@ -52,7 +59,7 @@
         </a>
       </li>
       <li>
-        <a href="v2-blueprint/">
+        <a href="v2-blueprint/" style="--accent:#1a4d8f">
           <div class="row">
             <span class="name"><span class="num">02</span> Technical Blueprint</span>
             <span class="dots"><span style="background:#f5f7f9"></span><span style="background:#1a4d8f"></span><span style="background:#12202e"></span></span>
@@ -61,7 +68,7 @@
         </a>
       </li>
       <li>
-        <a href="v3-minimal/">
+        <a href="v3-minimal/" style="--accent:#b5502e">
           <div class="row">
             <span class="name"><span class="num">03</span> Modern Minimal</span>
             <span class="dots"><span style="background:#faf9f6"></span><span style="background:#b5502e"></span><span style="background:#1c1f22"></span></span>
