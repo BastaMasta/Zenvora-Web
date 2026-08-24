@@ -104,9 +104,17 @@
   }
 
   if (form) {
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var submitLabel = submitBtn ? submitBtn.textContent : "";
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var data = Object.fromEntries(new FormData(form).entries());
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+      }
 
       fetch("/api/quote", {
         method: "POST",
@@ -124,6 +132,12 @@
         .catch(function () {
           showStatus("Opening your email client to send this request...");
           mailtoFallback(data);
+        })
+        .finally(function () {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitLabel;
+          }
         });
     });
   }

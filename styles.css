@@ -26,6 +26,10 @@ body{
 img,svg{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 ul,ol{list-style:none}
+::selection{background:var(--accent);color:var(--bg)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--accent);outline-offset:2px;
+}
 h1,h2,h3{font-family:var(--font-head);font-weight:600;line-height:1.1;letter-spacing:-0.02em}
 .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
 
@@ -38,6 +42,7 @@ h1,h2,h3{font-family:var(--font-head);font-weight:600;line-height:1.1;letter-spa
   margin-bottom:16px;
 }
 .section-index{display:none}
+.eyebrow-spaced{margin-top:56px}
 
 /* Buttons */
 .btn{
@@ -53,6 +58,7 @@ h1,h2,h3{font-family:var(--font-head);font-weight:600;line-height:1.1;letter-spa
 .btn-ghost{border-color:var(--ink);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 .btn-lg{padding:17px 32px;font-size:1.02rem}
+.btn:disabled{opacity:0.6;cursor:not-allowed}
 
 /* Header */
 .site-header{
@@ -65,7 +71,7 @@ h1,h2,h3{font-family:var(--font-head);font-weight:600;line-height:1.1;letter-spa
 .logo-mark{width:24px;height:24px;fill:var(--accent)}
 .main-nav{display:flex;align-items:center;gap:28px}
 .main-nav a{font-size:0.94rem;color:var(--ink-dim);transition:color .15s;white-space:nowrap}
-.main-nav a:hover{color:var(--ink)}
+.main-nav a:hover,.main-nav a[aria-current="page"]{color:var(--ink)}
 .header-actions{display:flex;align-items:center;gap:16px}
 .nav-toggle{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;flex-shrink:0}
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s ease, opacity .2s ease}
@@ -81,15 +87,13 @@ h1,h2,h3{font-family:var(--font-head);font-weight:600;line-height:1.1;letter-spa
   transition:color .15s;white-space:nowrap;
 }
 .nav-dropdown-toggle::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-top:-4px}
-.nav-dropdown-toggle:hover,.nav-dropdown.open .nav-dropdown-toggle{color:var(--ink)}
+.nav-dropdown-toggle:hover,.nav-dropdown.open .nav-dropdown-toggle,.nav-dropdown.current .nav-dropdown-toggle{color:var(--ink)}
 .nav-dropdown-menu{
   display:none;position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%);
   min-width:260px;background:var(--panel);border:1px solid var(--line);
   padding:10px;flex-direction:column;gap:2px;z-index:60;
 }
-.nav-dropdown-menu-wide{min-width:280px;grid-template-columns:1fr 1fr;gap:2px}
 .nav-dropdown.open .nav-dropdown-menu{display:flex}
-.nav-dropdown.open .nav-dropdown-menu-wide{display:grid}
 .nav-dropdown-menu a{font-size:0.86rem;color:var(--ink-dim);padding:9px 12px;white-space:nowrap}
 .nav-dropdown-menu a:hover{color:var(--accent);background:var(--bg-alt)}
 
@@ -99,10 +103,16 @@ h1,h2,h3{font-family:var(--font-head);font-weight:600;line-height:1.1;letter-spa
 .hero-content{max-width:600px}
 .hero-media img{width:100%;aspect-ratio:3/2;max-height:340px;object-fit:cover;border:1px solid var(--line)}
 .hero h1{font-size:clamp(2.6rem,6vw,4.4rem);margin-bottom:28px}
+.hero-page h1{max-width:820px}
 .hero-sub{font-size:1.2rem;color:var(--ink-dim);max-width:600px;margin-bottom:40px}
 .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px}
 .hero-tagline{font-family:var(--font-head);letter-spacing:0.02em;font-size:1rem;color:var(--ink-dim)}
 .hero-tagline::before{content:"— "}
+.page-icon{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:60px;height:60px;background:var(--accent-soft);margin-bottom:28px;
+}
+.page-icon svg{width:30px;height:30px;stroke:var(--accent);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 
 /* Sections */
 main section{padding:100px 0}
@@ -125,6 +135,7 @@ h2{font-size:clamp(2rem,3.8vw,2.8rem);margin-bottom:24px}
 .grid-industries .industry{flex:1 1 240px}
 
 .card,.value,.industry{
+  display:block;
   background:var(--panel);
   padding:32px 26px;transition:background .2s;
 }
@@ -132,9 +143,29 @@ h2{font-size:clamp(2rem,3.8vw,2.8rem);margin-bottom:24px}
 .icon{width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;margin-bottom:18px}
 .card h3,.value h3,.industry h3{font-size:1.1rem;margin-bottom:10px}
 .card p,.value p,.industry p{color:var(--ink-dim);font-size:0.92rem}
+.card-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.86rem;font-weight:600;color:var(--accent)}
+.card-link::after{content:"→";transition:transform .15s ease}
+a.card:hover .card-link::after{transform:translateX(3px)}
 
 .industries{background:var(--bg-alt)}
 .industries .grid,.why .grid{background:var(--line)}
+
+/* Division / interior page content blocks */
+.offering-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 56px;margin-top:48px}
+.offering-group h3{font-size:1.05rem;margin-bottom:14px}
+.offering-group p{color:var(--ink-dim);font-size:0.92rem;margin-bottom:14px}
+.offering-group ul{display:flex;flex-direction:column;gap:9px}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.offering-group li{color:var(--ink-dim);font-size:0.92rem;padding-left:18px;position:relative}
+.offering-group li::before{content:"";position:absolute;left:0;top:0.55em;width:6px;height:6px;background:var(--accent)}
+.pullquote{border-left:3px solid var(--accent);padding:4px 0 4px 28px;font-family:var(--font-head);font-size:1.5rem;font-weight:600;line-height:1.35;max-width:760px;margin-top:16px}
+.pullquote.on-dark{color:var(--bg)}
+
+.industries-table-wrap{overflow-x:auto;margin-top:48px}
+table.industries-table{width:100%;border-collapse:collapse;min-width:760px}
+.industries-table th,.industries-table td{text-align:left;padding:16px 18px;border-bottom:1px solid var(--line);font-size:0.88rem;color:var(--ink-dim);vertical-align:top}
+.industries-table th{font-family:var(--font-head);color:var(--ink);font-weight:600;background:var(--bg-alt)}
+.industries-table td:first-child,.industries-table th:first-child{font-family:var(--font-head);color:var(--ink);font-weight:600}
 
 /* Ecosystem / connected capabilities */
 .ecosystem{background:var(--ink);color:var(--bg)}
@@ -147,6 +178,7 @@ h2{font-size:clamp(2rem,3.8vw,2.8rem);margin-bottom:24px}
 }
 .capability-flow .arrow{color:var(--accent);font-size:1.4rem}
 .ecosystem-statement{color:#c9c8c2;margin-top:40px;max-width:700px}
+.capability-flow.light .step{background:var(--panel);border:1px solid var(--line);color:var(--ink)}
 
 /* CTA / contact */
 .cta-contact{background:var(--bg-alt)}
@@ -194,15 +226,15 @@ h2{font-size:clamp(2rem,3.8vw,2.8rem);margin-bottom:24px}
 
   .nav-dropdown{border-bottom:1px solid var(--line);width:100%}
   .nav-dropdown-toggle{width:100%;justify-content:space-between;padding:16px 0}
-  .nav-dropdown-menu,.nav-dropdown-menu-wide{
+  .nav-dropdown-menu{
     position:static;transform:none;display:none;min-width:0;
-    grid-template-columns:1fr;border:none;padding:0 0 12px;background:none;
+    border:none;padding:0 0 12px;background:none;
   }
-  .nav-dropdown.open .nav-dropdown-menu,.nav-dropdown.open .nav-dropdown-menu-wide{display:flex;flex-direction:column}
+  .nav-dropdown.open .nav-dropdown-menu{display:flex;flex-direction:column}
   .nav-dropdown-menu a{padding:10px 0 10px 16px}
 }
 @media (max-width:980px){
-  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}
   .grid-5{grid-template-columns:repeat(2,1fr)}
   .grid-industries .industry{flex:1 1 45%}
   .cta-inner{grid-template-columns:1fr}
@@ -212,8 +244,10 @@ h2{font-size:clamp(2rem,3.8vw,2.8rem);margin-bottom:24px}
   .footer-cols{flex-basis:100%}
 }
 @media (max-width:640px){
-  .grid-4,.grid-5{grid-template-columns:1fr}
+  .grid-4,.grid-5,.grid-3{grid-template-columns:1fr}
   .grid-industries .industry{flex:1 1 100%}
+  .offering-groups{grid-template-columns:1fr;gap:32px}
+  .pullquote{font-size:1.25rem}
   .capability-flow{flex-direction:column;align-items:center}
   .capability-flow .arrow{transform:rotate(90deg)}
   .hero{padding:100px 0 80px}
